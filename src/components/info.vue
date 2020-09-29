@@ -1,110 +1,143 @@
 <template>
-  <v-data-table
-    dense
-    :headers="headers"
-    :items="tests"
-    item-key="name"
-    class="elevation-1"
-  ></v-data-table>
+  <!-- headers -->
+  <div>
+    <v-card color="amber darken-3" dark shaped>
+      <v-row class="justify-space-between align-center d-flex align-center">
+        <v-col cols="1" class="mr-n0 px-n5">
+          <v-card
+            class="justify-center align-center d-flex align-center mr-4"
+            color="amber darken-3"
+            elevation="0"
+          >
+            <h3>مرحله</h3></v-card
+          >
+        </v-col>
+        <v-col cols="1" class="mr-n5 px-n5">
+          <v-card
+            class="justify-center align-center d-flex align-center"
+            color="amber darken-3"
+            elevation="0"
+          >
+            <h3>تاریخ</h3></v-card
+          >
+        </v-col>
+        <v-col cols="1" class="mr-n3 px-3">
+          <v-card
+            class="justify-center align-center d-flex align-center mr-5"
+            color="amber darken-3"
+            elevation="0"
+            ><h4 class="text-center">دفترچه سوال</h4></v-card
+          >
+        </v-col>
+        <v-col cols="3" class="mr-n3">
+          <v-card
+            class="justify-center align-center d-flex align-center"
+            color="amber darken-3"
+            elevation="0"
+          >
+            <h3>پاسخنامه تشریحی \ تصویری</h3></v-card
+          >
+        </v-col>
+        <v-col cols="1" class="mr-n5">
+          <v-card
+            class="justify-center align-center d-flex align-center"
+            color="amber darken-3"
+            elevation="0"
+            ><h3>کارنامه ها</h3></v-card
+          >
+        </v-col>
+        <v-col cols="1" class="mr-n5">
+          <v-card
+            class="justify-center align-center d-flex align-center"
+            color="amber darken-3"
+            elevation="0"
+          >
+            <h4>کلید آزمون</h4></v-card
+          >
+        </v-col>
+        <v-col cols="1" class="mr-n5">
+          <v-card
+            class="justify-center align-center d-flex align-center"
+            color="amber darken-3"
+            elevation="0"
+          >
+            <h4 class="text-center">اشتباهات و نزده ها</h4></v-card
+          >
+        </v-col>
+        <v-col cols="1" class="mr-n5">
+          <v-card
+            class="justify-center align-center d-flex align-center text-center"
+            color="amber darken-3"
+            elevation="0"
+          >
+            <h4 class="text-center">شروع آزمون</h4>
+          </v-card>
+        </v-col>
+        <v-col cols="1" class="mr-n5">
+          <v-card
+            class="justify-center align-center d-flex align-center ml-3"
+            color="amber darken-3"
+            elevation="0"
+            ><h3>وضعیت</h3></v-card
+          >
+        </v-col>
+      </v-row>
+    </v-card>
+
+    <!-- 
+       #
+       #
+       #
+       #
+       #
+       actual ones -->
+
+    <v-row class="justify-space-between align-center d-flex align-center">
+      <v-col cols="1" class="mr-n0 px-n5">
+        <v-card class="justify-center align-center d-flex align-center mr-4">
+          <h3>مرحله</h3></v-card
+        >
+      </v-col>
+      <v-col cols="1" class="mr-n5 px-n5">
+        <v-card class="justify-center align-center d-flex align-center">
+          <h3>تاریخ</h3></v-card
+        >
+      </v-col>
+      <v-col cols="1" class="mr-n3 px-3">
+        <v-card class="justify-center align-center d-flex align-center mr-5"
+          ><h4 class="text-center">دفترچه سوال</h4></v-card
+        >
+      </v-col>
+      <v-col cols="3" class="mr-n3">
+        <v-card class="justify-center align-center d-flex align-center">
+          <h3>پاسخنامه تشریحی \ تصویری</h3></v-card
+        >
+      </v-col>
+      <v-col cols="1" class="mr-n5">
+        <v-card class="justify-center align-center d-flex align-center"
+          ><h3>کارنامه ها</h3></v-card
+        >
+      </v-col>
+      <v-col cols="1" class="mr-n5">
+        <v-card class="justify-center align-center d-flex align-center">
+          <h4>کلید آزمون</h4></v-card
+        >
+      </v-col>
+      <v-col cols="1" class="mr-n5">
+        <v-card class="justify-center align-center d-flex align-center">
+          <h4 class="text-center">اشتباهات و نزده ها</h4></v-card
+        >
+      </v-col>
+      <v-col cols="1" class="mr-n5">
+        <v-card class="justify-center align-center d-flex align-center">
+          <h4 class="text-center">شروع آزمون</h4>
+        </v-card>
+      </v-col>
+      <v-col cols="1" class="mr-n5">
+        <v-card class="justify-center align-center d-flex align-center ml-3"
+          ><h3>وضعیت</h3></v-card
+        >
+      </v-col>
+    </v-row>
+  </div>
 </template>
-<script>
-export default {
-  data: () => ({
-    tests: [
-      {
-        name: "اول",
-        answerFull: 159,
-       answerShortS: 6.0,
-        carbs: 24,
-        protein: 4.0,
-        iron: "1%",
-      },
-      {
-        name: "Ice cream sandwich",
-        calories: 237,
-        fat: 9.0,
-        carbs: 37,
-        protein: 4.3,
-        iron: "1%",
-      },
-      {
-        name: "Eclair",
-        calories: 262,
-        fat: 16.0,
-        carbs: 23,
-        protein: 6.0,
-        iron: "7%",
-      },
-      {
-        name: "Cupcake",
-        calories: 305,
-        fat: 3.7,
-        carbs: 67,
-        protein: 4.3,
-        iron: "8%",
-      },
-      {
-        name: "Gingerbread",
-        calories: 356,
-        fat: 16.0,
-        carbs: 49,
-        protein: 3.9,
-        iron: "16%",
-      },
-      {
-        name: "Jelly bean",
-        calories: 375,
-        fat: 0.0,
-        carbs: 94,
-        protein: 0.0,
-        iron: "0%",
-      },
-      {
-        name: "Lollipop",
-        calories: 392,
-        fat: 0.2,
-        carbs: 98,
-        protein: 0,
-        iron: "2%",
-      },
-      {
-        name: "Honeycomb",
-        calories: 408,
-        fat: 3.2,
-        carbs: 87,
-        protein: 6.5,
-        iron: "45%",
-      },
-      {
-        name: "Donut",
-        calories: 452,
-        fat: 25.0,
-        carbs: 51,
-        protein: 4.9,
-        iron: "22%",
-      },
-      {
-        name: "KitKat",
-        calories: 518,
-        fat: 26.0,
-        carbs: 65,
-        protein: 7,
-        iron: "6%",
-      },
-    ],
-    headers: [
-      {
-        text: "Dessert (100g serving)",
-        align: "start",
-        sortable: false,
-        value: "name",
-      },
-      { text: "Calories", value: "calories" },
-      { text: "Fat (g)", value: "fat" },
-      { text: "Carbs (g)", value: "carbs" },
-      { text: "Protein (g)", value: "protein" },
-      { text: "Iron (%)", value: "iron" },
-    ],
-  }),
-};
-</script>
