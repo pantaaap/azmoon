@@ -5,6 +5,7 @@
 </template>
 <script>
 import info from "./../components/info";
+
 export default {
   components: {
     info,

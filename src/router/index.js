@@ -37,6 +37,24 @@ const routes = [{
             import ( /* webpackChunkName: "success" */ "../views/success.vue"),
     },
     {
+        path: "/javab",
+        name: "javab",
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+            import ( /* webpackChunkName: "javab" */ "../views/javab.vue"),
+    },
+    {
+        path: "/main",
+        name: "main",
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+            import ( /* webpackChunkName: "main" */ "../views/main.vue"),
+    },
+    {
         path: "/products",
         name: "products",
         // route level code-splitting
