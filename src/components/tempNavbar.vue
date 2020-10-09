@@ -5,7 +5,7 @@
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" temporary app fixed absolute right>
-      <pasokhnameh
+      <pasokhnameh :questions="questions"
     /></v-navigation-drawer>
   </v-card>
 </template>
@@ -13,6 +13,11 @@
 <script>
 import pasokhnameh from "./../components/pasokhnameh";
 export default {
+  props: {
+    questions: {
+      type: Array,
+    },
+  },
   components: {
     pasokhnameh,
   },

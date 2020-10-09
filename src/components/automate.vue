@@ -2,7 +2,11 @@
   <v-card class="mx-2" width="95%" color="grey lighten-3" elevation="1">
     <v-row>
       <v-col cols="3">
-        <v-checkbox class="mr-5 ml-0 ml-lg-n10" small></v-checkbox>
+        <v-checkbox
+          class="mr-5 ml-0 ml-lg-n10"
+          small
+          @change="automate"
+        ></v-checkbox>
       </v-col>
       <v-col
         ><span class="body-2 d-inline-block mt-3 py-1 py-lg-3">
@@ -12,3 +16,19 @@
     >
   </v-card>
 </template>
+<script>
+export default {
+  methods: {
+    automate() {
+      this.checked = !this.checked;
+      console.log(this.checked);
+      this.$emit("automate", this.checked);
+    },
+  },
+  data() {
+    return {
+      checked: false,
+    };
+  },
+};
+</script>

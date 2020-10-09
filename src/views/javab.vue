@@ -7,13 +7,8 @@
       <v-col cols="12" md="6"> <rank /></v-col>
       <v-col cols="12" md="6"> <rankComp /></v-col>
     </v-row>
-    <v-data-table
-      :headers="headers"
-      :items="desserts"
-      class="elevation-1"
-      hide-default-footer
-    ></v-data-table>
-    <pasokhnameh />
+
+    <pasokhnameh :column="5" />
   </div>
 </template>
 <script>
@@ -42,49 +37,46 @@ export default {
         }
         return arr;
       },
-      value: {
-        type: Array,
-        default: () => [],
-      },
     },
-    data() {
-      const chbxVals = {};
-      this.questions.forEach((q) => {
-        chbxVals[q.number] = {};
-        q.gozineha.forEach((g) => {
-          chbxVals[q.number][g.number] = false;
-        });
+    value: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  data() {
+    const chbxVals = {};
+    this.questions.forEach((q) => {
+      chbxVals[q.number] = {};
+      q.gozineha.forEach((g) => {
+        chbxVals[q.number][g.number] = false;
       });
-      return {
-        inputValue: this.value,
-        checkboxVals: chbxVals,
-      };
+    });
+    return {
+      inputValue: this.value,
+      checkboxVals: chbxVals,
+    };
+  },
+  methods: {
+    onGozineChaged(q, g) {
+      if (this.inputValue[q.number] && this.inputValue[q.number] === g.number) {
+        this.inputValue[q.number] = -1;
+      } else {
+        this.inputValue[q.number] = g.number;
+      }
+      for (const n in this.checkboxVals[q.number]) {
+        this.checkboxVals[q.number][n] = false;
+      }
+      if (!this.checkboxVals[q.number]) {
+        this.checkboxVals[q.number] = {};
+      }
+      this.checkboxVals[q.number][g.number] = true;
+      console.log(this.inputValue);
     },
-    methods: {
-      onGozineChaged(q, g) {
-        if (
-          this.inputValue[q.number] &&
-          this.inputValue[q.number] === g.number
-        ) {
-          this.inputValue[q.number] = -1;
-        } else {
-          this.inputValue[q.number] = g.number;
-        }
-        for (const n in this.checkboxVals[q.number]) {
-          this.checkboxVals[q.number][n] = false;
-        }
-        if (!this.checkboxVals[q.number]) {
-          this.checkboxVals[q.number] = {};
-        }
-        this.checkboxVals[q.number][g.number] = true;
-        console.log(this.inputValue);
-      },
-      isAnsweredForQuestion(q, g) {
-        return (
-          this.inputValue[q.number] === g.number ||
-          (this.mode === "a" && q.answer === g.number)
-        );
-      },
+    isAnsweredForQuestion(q, g) {
+      return (
+        this.inputValue[q.number] === g.number ||
+        (this.mode === "a" && q.answer === g.number)
+      );
     },
   },
 };
